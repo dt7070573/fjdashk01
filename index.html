@@ -1,19 +1,57 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>My First Game</title>
-  </head>
-  <body>
-    <h1>안녕하세요</h1>
-    <p>이건 테스트입니다.</p>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <title>Room</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #111;
+      color: #eee;
+      padding: 40px;
+    }
+    button {
+      margin-top: 20px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
 
+  <div id="text">
+    당신은 낯선 방에서 눈을 떴다.
+  </div>
 
-<button onclick="alert('눌렀다면 당신은 2026년에 줩의 행운을 받습니다!')">
-버튼을 누를까?
-</button>
+  <div id="choices">
+    <button onclick="next('look')">주변을 살핀다</button>
+    <button onclick="next('wait')">가만히 있는다</button>
+  </div>
 
+  <script>
+    function next(choice) {
+      const text = document.getElementById('text');
+      const choices = document.getElementById('choices');
 
+      if (choice === 'look') {
+        text.innerText = '방은 조용하다. 너무 조용하다.';
+        choices.innerHTML = `
+          <button onclick="next('door')">문을 연다</button>
+        `;
+      }
+
+      if (choice === 'wait') {
+        text.innerText = '시간이 흐른다. 아무 일도 일어나지 않는다.';
+        choices.innerHTML = `
+          <button onclick="next('look')">다시 주변을 살핀다</button>
+        `;
+      }
+
+      if (choice === 'door') {
+        text.innerText = '문 너머에서 무언가가 당신을 보고 있다.';
+        choices.innerHTML = '';
+      }
+    }
+  </script>
+
+</body>
 </html>
-
