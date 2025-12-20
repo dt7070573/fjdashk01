@@ -2,9 +2,9 @@ const btn = document.getElementById('action-btn');
 const logWindow = document.getElementById('log-window');
 
 const character = {
-    name: "모험가"
-    strength: 5
-    intel:8
+    name: "모험가",
+    strength: 5,
+    intel: 8
 };
 
 btn.addEventListener('click', function(){
