@@ -1,57 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>Room</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      background: #111;
-      color: #eee;
-      padding: 40px;
-    }
-    button {
-      margin-top: 20px;
-      display: block;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>방탈출 시뮬레이터</title>
 </head>
 <body>
+    <h1>방탈출 시뮬레이터</h1>
 
-  <div id="text">
-    당신은 낯선 방에서 눈을 떴다.
-  </div>
+    <p>상태: <span id="status">대기 중...</span></p>
 
-  <div id="choices">
-    <button onclick="next('look')">주변을 살핀다</button>
-    <button onclick="next('wait')">가만히 있는다</button>
-  </div>
+    <button id="action-btn">탈출 시도하기</button>
 
-  <script>
-    function next(choice) {
-      const text = document.getElementById('text');
-      const choices = document.getElementById('choices');
+    <div id="log-window" style="border: 1px solid black; height: 100px; overflow-y: scroll;">
+        <p>게임이 시작되었습니다.</p>
+    </div>
 
-      if (choice === 'look') {
-        text.innerText = '방은 조용하다. 너무 조용하다.';
-        choices.innerHTML = `
-          <button onclick="next('door')">문을 연다</button>
-        `;
-      }
-
-      if (choice === 'wait') {
-        text.innerText = '시간이 흐른다. 아무 일도 일어나지 않는다.';
-        choices.innerHTML = `
-          <button onclick="next('look')">다시 주변을 살핀다</button>
-        `;
-      }
-
-      if (choice === 'door') {
-        text.innerText = '문 너머에서 무언가가 당신을 보고 있다.';
-        choices.innerHTML = '';
-      }
-    }
-  </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
