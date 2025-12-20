@@ -13,10 +13,10 @@ btn.addEventListener('click', function(){
     const dice = Math.random() * 10;
 
     if (character.intel > dice) {
-        newLog.textContent = '[지능 성공] 캐릭터가 암호를 풀었습니다! (주사위: ${dice.toFixed(1)})';
+        newLog.textContent = `[지능 성공] 캐릭터가 암호를 풀었습니다! (주사위: ${dice.toFixed(1)})`;
         newLog.style.color = "blue";
     } else {
-        newLog.textContent = '[지능 실패] 암호가 너무 복잡합니다. (주사위: ${dice.toFixed(1)})';
+        newLog.textContent = `[지능 실패] 암호가 너무 복잡합니다. (주사위: ${dice.toFixed(1)})`;
         newLog.style.color = "red";
     }
 
