@@ -1,6 +1,6 @@
 const btn = document.getElementById('action-btn');
 const resetBtn = document.getElementById('reset-btn');
-const logWindow = document.getELementById('log-window');
+const logWindow = document.getElementById('log-window');
 
 const inputName = document.getElementById('input-name');
 const inputStr = document.getElementById('input-str');
