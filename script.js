@@ -3,7 +3,7 @@ const resetBtn = document.getElementById('reset-btn');
 const logWindow = document.getELementById('log-window');
 
 const inputName = document.getElementById('input-name');
-const inputStr = document.getELementById('input-str');
+const inputStr = document.getElementById('input-str');
 const inputIntl = document.getElementById('input-intl');
 
 let isLocked = false;
@@ -30,7 +30,7 @@ btn.addEventListener('click', function(){
     const myIntl = Number(inputIntl.value);
 
     if (Math.random() > 0.5) {
-        if (MyIntl > dice) {
+        if (myIntl > dice) {
             newLog.textContent = `[지능 성공] ${inputName.value}(이)가 암호를 풀었습니다! (주사위: ${dice.toFixed(1)})`;
             newLog.style.color = "blue";
         } else {
