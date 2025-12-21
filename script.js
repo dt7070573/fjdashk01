@@ -11,7 +11,7 @@ let isLocked = false;
 btn.addEventListener('click', function(){
     if (isLocked === false) {
         inputName.disabled = true;
-        inputStr.disadled = true;
+        inputStr.disabled = true;
         inputIntl.disabled = true;
 
         resetBtn.style.display = "inline";
