@@ -1,26 +1,67 @@
 const btn = document.getElementById('action-btn');
-const logWindow = document.getElementById('log-window');
+const resetBtn = document.getElementByID('reset-btn');
+const logWindow = document.getELementById('log-window');
 
-const character = {
-    name: "모험가",
-    strength: 5,
-    intel: 8
-};
+const inputName = document.getElementById('input-name');
+const inputStr = document.getELementById('input-str');
+const inputIntl = documnet.getElementById('input-intl');
+
+let isLocked = false;
 
 btn.addEventListener('click', function(){
+    if (isLocked === false) {
+        inputName.disabled = true;
+        inputStr.disadled = true;
+        inputIntl.disabled = true;
+
+        resetBtn.style.display = "inline";
+
+        isLocked = true;
+
+        const startLog = document.createElement('p');
+        startLog.textContent = `[${inputName.value}] 캐릭터가 생성되었습니다! (힘:${inputStr.value}, 지능:${inputIntl.value})`;
+        startLog.style.fontWeight = "bold";
+        logWindow.appendChild(startLog);
+    }
+
     const newLog = document.createElement('p');
-
     const dice = Math.random() * 10;
+    const myStr = Number(inputStr.value);
+    const myIntl = Number(inputIntl.value);
 
-    // 반드시 ` (백틱)으로 시작하고 끝내야 합니다.
-    if (character.intel > dice) {
-        newLog.textContent = `[지능 성공] 캐릭터가 암호를 풀었습니다! (주사위: ${dice.toFixed(1)})`;
-        newLog.style.color = "blue";
+    if (Math.random() > 0.5) {
+        if (MyIntl > dice) {
+            newLog.textContent = `[지능 성공] ${inputName.value}(이)가 암호를 풀었습니다! (주사위: ${dice.tofixed(1)})`;
+            newLog.style.color = "blue";
+        } else {
+            newLog.textContent = `[지능 실패] ${inputName.value}(은)는 머리가 아픕니다... (주사위: ${dice.tofixed(1)})`;
+            newLog.style.color = "red";
+        } 
     } else {
-        newLog.textContent = `[지능 실패] 암호가 너무 복잡합니다. (주사위: ${dice.toFixed(1)})`;
-        newLog.style.color = "red";
+        if (myStr > dice) {
+            newLog.textContent = `[힘 성공] ${inputName.value}(이)가 문을 부쉈습니다! (주사위: ${dice.tofixed(1)})`;
+            newLog.style.color = "darkgreen";
+        } else {
+            newLog.textContent = `[힘 실패] ${inputName.value}(은)는 손이 미끄러집니다... (주사위: ${dice.tofixed(1)})`;
+            newLog.style.color = "orange";
+        } 
     }
 
     logWindow.appendChild(newLog);
+    logWindow.scrollTop = logWindow.scrollHeight;
+
+}});
+
+resetBtn.addEventListener('click', function() {
+    isLocked = false;
+    inputName.disabled = false;
+    inpustStr.disabled = false;
+    inputIntl.disabled = false;
+
+    resetBtn.style.display = "none";
+
+    const resetLog = document.createElement('p');
+    resetLog.textContent = "--------------------- 새 캐릭터를 설정하세요 ---------------------";
+    logWindow.appendChild(resetLog);
     logWindow.scrollTop = logWindow.scrollHeight;
 });
