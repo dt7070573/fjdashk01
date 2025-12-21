@@ -1,10 +1,10 @@
 const btn = document.getElementById('action-btn');
-const resetBtn = document.getElementByID('reset-btn');
+const resetBtn = document.getElementById('reset-btn');
 const logWindow = document.getELementById('log-window');
 
 const inputName = document.getElementById('input-name');
 const inputStr = document.getELementById('input-str');
-const inputIntl = documnet.getElementById('input-intl');
+const inputIntl = document.getElementById('input-intl');
 
 let isLocked = false;
 
@@ -31,18 +31,18 @@ btn.addEventListener('click', function(){
 
     if (Math.random() > 0.5) {
         if (MyIntl > dice) {
-            newLog.textContent = `[지능 성공] ${inputName.value}(이)가 암호를 풀었습니다! (주사위: ${dice.tofixed(1)})`;
+            newLog.textContent = `[지능 성공] ${inputName.value}(이)가 암호를 풀었습니다! (주사위: ${dice.toFixed(1)})`;
             newLog.style.color = "blue";
         } else {
-            newLog.textContent = `[지능 실패] ${inputName.value}(은)는 머리가 아픕니다... (주사위: ${dice.tofixed(1)})`;
+            newLog.textContent = `[지능 실패] ${inputName.value}(은)는 머리가 아픕니다... (주사위: ${dice.toFixed(1)})`;
             newLog.style.color = "red";
         } 
     } else {
         if (myStr > dice) {
-            newLog.textContent = `[힘 성공] ${inputName.value}(이)가 문을 부쉈습니다! (주사위: ${dice.tofixed(1)})`;
+            newLog.textContent = `[힘 성공] ${inputName.value}(이)가 문을 부쉈습니다! (주사위: ${dice.toFixed(1)})`;
             newLog.style.color = "darkgreen";
         } else {
-            newLog.textContent = `[힘 실패] ${inputName.value}(은)는 손이 미끄러집니다... (주사위: ${dice.tofixed(1)})`;
+            newLog.textContent = `[힘 실패] ${inputName.value}(은)는 손이 미끄러집니다... (주사위: ${dice.toFixed(1)})`;
             newLog.style.color = "orange";
         } 
     }
@@ -50,12 +50,12 @@ btn.addEventListener('click', function(){
     logWindow.appendChild(newLog);
     logWindow.scrollTop = logWindow.scrollHeight;
 
-}});
+});
 
 resetBtn.addEventListener('click', function() {
     isLocked = false;
     inputName.disabled = false;
-    inpustStr.disabled = false;
+    inputStr.disabled = false;
     inputIntl.disabled = false;
 
     resetBtn.style.display = "none";
