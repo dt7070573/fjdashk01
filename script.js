@@ -23,29 +23,28 @@ let currentFloor = 1; //시작 층수
 addBtn.addEventListener('click', function() {
     if (characters.length < 5 && nameInput.value.trim() !== "") {
 
-        const s = Number(strInput.value);
-        const i = Number(intInput.value);
-        const d = Number(dexInput.value);
-        characters.push({
-            name: nameInput.value,
-            str: s,
-            int: i,
-            dex: d
-        }); //배열에 이름 추가
 
-        nameInput.value = "";
-        strInput.value = "";
-        intInput.value = "";
-        dexInput.value = "";
+    const charObj = {
+        name: nameInput.value,
+        str: Number(strInput.value),
+        int: Number(intInput.value),
+        dex: Number(dexInput.value),
+    };
 
-        const li = document.createElement('li');
-        li.textContent = nameInput.value;
-        nameList.appendChild(li);
+    characters.push(charObj);
 
-        nameInput.value = ""; //입력창 비우기
-        partyCount.textContent = `참가 인원: ${characters.length}/5명`;
+    const charInfoLi = document.createElement('li');
+    charInfoLi.textContent = `${charObj.name} (💪${charObj.str} 🧠${charObj.int} ⚡${charObj.dex})`;
+    nameList.appendChild(charInfoLi);
 
-        if (characters.length > 0) startBtn.disabled = false;
+    partyCount.textContent = `참가 인원: ${characters.length}/5명`;
+
+    nameInput.value = "";
+    strInput.value = "";
+    intInput.value = "";
+    dexInput.value = "";
+
+    if (characters.length > 0) startBtn.disabled = false;
     }
 });
 
