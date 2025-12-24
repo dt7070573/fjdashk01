@@ -76,7 +76,6 @@ let currentFloor = 1; //시작 층수
 addBtn.addEventListener('click', function() {
     if (characters.length < 5 && nameInput.value.trim() !== "") {
 
-
     const charObj = {
         name: nameInput.value,
         str: Number(strInput.value),
@@ -93,9 +92,9 @@ addBtn.addEventListener('click', function() {
     partyCount.textContent = `참가 인원: ${characters.length}/5명`;
 
     nameInput.value = "";
-    strInput.value = "";
-    intInput.value = "";
-    dexInput.value = "";
+    strInput.value = "1";
+    intInput.value = "1";
+    dexInput.value = "1";
 
     if (characters.length > 0) startBtn.disabled = false;
     }
@@ -129,7 +128,7 @@ exploreBtn.addEventListener('click', function(){
         currentFloor++;
         if (currentFloor <= 6) {
             const nextRoom = mansionMap[currentFloor];
-            floorText.tqextContent = `현재 위치: ${currentFloor}층 ${room.name}`;
+            floorText.textContent = `현재 위치: ${currentFloor}층 ${nextRoom.name}`;
         }
     } else {
         addLog(`실패: ${room.failMsg} 이 방에서 더 수색해야 합니다.`);
