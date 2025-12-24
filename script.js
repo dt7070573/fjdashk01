@@ -15,6 +15,7 @@ const floorText = document.getElementById('current-floor');
 const strInput = document.getElementById('str-input');
 const intInput = document.getElementById('int-input');
 const dexInput = document.getElementById('dex-input');
+const retryBtn = document.getElementById('retry-btn');
 
 const mansionMap = {
     1: {
@@ -104,6 +105,7 @@ addBtn.addEventListener('click', function() {
 startBtn.addEventListener('click', function(){
     setupArea.style.display = "none";
     gameArea.style.display = "block";
+    retryBtn.style.display = "none";
 
     const room = mansionMap[currentFloor];
     floorText.textContent = `현재 위치: ${currentFloor}층 ${room.name}`;
@@ -126,15 +128,33 @@ exploreBtn.addEventListener('click', function(){
         addLog(`성공: ${room.successMsg}`);
         currentFloor++;
         if (currentFloor <= 6) {
-            floorText.textContent = `현재 위치: ${currentFloor}층 ${room.name}`;
+            const nextRoom = mansionMap[currentFloor];
+            floorText.tqextContent = `현재 위치: ${currentFloor}층 ${room.name}`;
         }
     } else {
         addLog(`실패: ${room.failMsg} 이 방에서 더 수색해야 합니다.`);
     }
 
     if (currentFloor == 7) {
+        retryBtn.style.display = "block";
+        exploreBtn.style.display = "none";
         addLog(`다락을 통해 성공적으로 저택의 옥상에 올라왔습니다!`);
     }
+
+});
+
+retryBtn.addEventListener('click', function(){
+        currentFloor = 1;
+        characters = [];
+
+        nameList.innerHTML = "";
+        partyCount.textContent = "참가 인원 : 0/5명";
+        logWindow.innerHTML = "";
+        startBtn.disabled = true;
+        exploreBtn.style.display = "inline-block";
+        
+    setupArea.style.display = "block";
+    gameArea.style.display = "none";
 });
 
 function addLog(message) {
@@ -142,4 +162,4 @@ function addLog(message) {
     p.textContent = message;
     logWindow.appendChild(p);
     logWindow.scrollTop = logWindow.scrollHeight;
-}
+};
