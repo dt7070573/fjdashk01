@@ -124,7 +124,7 @@ exploreBtn.addEventListener('click', function(){
     const charStat = luckyChar[room.require];
 
     if (charStat >= 5) {
-        addLog(`성공: ${room.successMsg}`);
+        addLog(`성공: ${room.successMsg}`, "green");
         currentFloor++;
         
         if (currentFloor === 7) {
@@ -138,7 +138,7 @@ exploreBtn.addEventListener('click', function(){
             floorText.textContent = `현재 위치: ${currentFloor}층 ${nextRoom.name}`;
         }
     } else {
-        addLog(`실패: ${room.failMsg} 이 방에서 더 수색해야 합니다.`);
+        addLog(`실패: ${room.failMsg} 이 방에서 더 수색해야 합니다.`, "red");
     }
 
 
@@ -158,9 +158,10 @@ retryBtn.addEventListener('click', function(){
     gameArea.style.display = "none";
 });
 
-function addLog(message) {
-    const p = document.createElement('p');
-    p.textContent = message;
-    logWindow.appendChild(p);
+function addLog(message, color = "black") {
+    const logP = document.createElement('p');
+    logP.textContent = message;
+    logP.style.color = color;
+    logWindow.appendChild(logP);
     logWindow.scrollTop = logWindow.scrollHeight;
 };
