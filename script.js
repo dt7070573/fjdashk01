@@ -45,8 +45,8 @@ const mansionMap = {
         name: "침실",
         object: "침대",
         require: "dex",
-        successMsg: "침대 아래에 .",
-        failMsg: "."
+        successMsg: "침대 아래 상자의 좁은 틈에서 열쇠를 찾았습니다.",
+        failMsg: "유연성이 더 필요할 것 같습니다."
     },
 
     5: {
@@ -130,6 +130,10 @@ exploreBtn.addEventListener('click', function(){
         }
     } else {
         addLog(`실패: ${room.failMsg} 이 방에서 더 수색해야 합니다.`);
+    }
+
+    if (currentFloor == 7) {
+        addLog(`다락을 통해 성공적으로 저택의 옥상에 올라왔습니다!`);
     }
 });
 
