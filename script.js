@@ -126,19 +126,18 @@ exploreBtn.addEventListener('click', function(){
     if (charStat >= 5) {
         addLog(`성공: ${room.successMsg}`);
         currentFloor++;
-        if (currentFloor <= 6) {
+        
+        if (currentFloor === 7) {
+            retryBtn.style.display = "block";
+            exploreBtn.style.display = "none";
+            floorText.textContent = `현재 위치: 저택 옥상`;
+            addLog(`다락을 통해 성공적으로 저택의 옥상에 올라왔습니다!`);
+            
+        } else if (currentFloor <= 6) {
             const nextRoom = mansionMap[currentFloor];
             floorText.textContent = `현재 위치: ${currentFloor}층 ${nextRoom.name}`;
         }
-    } else if (currentFloor === 7) {
-        retryBtn.style.display = "block";
-        exploreBtn.style.display = "none";
-
-        floorText.textContent = `현재 위치: 저택 옥상`;
-        addLog(`다락을 통해 성공적으로 저택의 옥상에 올라왔습니다!`);
-    }
-    
-    else {
+    } else {
         addLog(`실패: ${room.failMsg} 이 방에서 더 수색해야 합니다.`);
     }
 
