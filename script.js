@@ -16,7 +16,7 @@ const strInput = document.getElementById('str-input');
 const intInput = document.getElementById('int-input');
 const dexInput = document.getElementById('dex-input');
 
-const manshionMap = {
+const mansionMap = {
     1: {
         name: "저택 로비",
         object: "대리석 조각상",
@@ -114,6 +114,7 @@ startBtn.addEventListener('click', function(){
 
 //3. 진행 버튼 클릭 (층수 이동 및 랜덤 사건)
 exploreBtn.addEventListener('click', function(){
+    const room = mansionMap[currentFloor];
     const luckyChar = characters[Math.floor(Math.random() * characters.length)];
 
     addLog(`[${room.name}]에 진입했습니다. [${room.object}]를 발견했습니다!`);
